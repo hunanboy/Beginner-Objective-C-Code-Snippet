@@ -1,0 +1,4 @@
+// Put this in viewWillAppear
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(<#event.latitude.doubleValue#>, <#event.longitude.doubleValue#>);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(center, 500, 500);
+    [mapView setRegion:region animated:YES];
