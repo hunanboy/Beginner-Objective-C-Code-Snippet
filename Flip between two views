@@ -1,0 +1,19 @@
+// Flip between two views of same view controller
+// must use option: UIViewAnimationOptionShowHideTransitionViews, otherwise will remove the old view!
+// isTableView is ivar of the view controller
+[UIView transitionFromView:(self.isTableView ? self.mapView : self.tableView)
+ 
+                    toView:(self.isTableView ? self.tableView : self.mapView)
+ 
+                  duration:0.8
+ 
+                   options:UIViewAnimationOptionShowHideTransitionViews |
+                            (self.isTableView ? UIViewAnimationOptionTransitionFlipFromRight :
+                             UIViewAnimationOptionTransitionFlipFromLeft)
+ 
+                completion:^(BOOL finished) {
+                   
+                    self.navigationItem.rightBarButtonItem.title = self.isTableView ? @"Map":@"Master";
+                    self.title = self.isTableView ? @"Master":@"Map";
+                    self.isTableView = !self.isTableView;
+                }];
