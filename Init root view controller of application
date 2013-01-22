@@ -1,0 +1,3 @@
+<#FirstVC#> *fvc = [[<#FirstVC#> alloc] init];
+UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:fvc];
+[self.window setRootViewController:nav];
