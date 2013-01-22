@@ -1,0 +1,4 @@
+UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStylePlain 
+                                                                     target:self 
+                                                                     action:@selector(slide:)];
+[[self navigationItem] setLeftBarButtonItem:bbi];
