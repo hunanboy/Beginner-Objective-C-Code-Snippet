@@ -1,0 +1,14 @@
+// target-action for UIPanGestureRecognizer
+// Invoke many times at short time intervals during finger moving
+- (IBAction)handlePan:(UIPanGestureRecognizer *)sender {
+   
+    // set the coordinates in superview
+    CGPoint translation = [sender translationInView:sender.view.superview];
+    sender.view.center = CGPointMake(sender.view.center.x + translation.x,
+                                         sender.view.center.y + translation.y);
+    // reset position everytime method get called
+    // Otherwise the image will fly away quickly
+    // because the translation get accumulated!
+    [sender setTranslation:CGPointMake(0, 0) inView:sender.view.superview];
+   
+}
