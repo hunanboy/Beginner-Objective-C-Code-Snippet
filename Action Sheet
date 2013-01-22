@@ -1,0 +1,34 @@
+- (void)showActionSheet
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Title"
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+   
+    // add "normal" buttons
+    NSArray *array = @[@"1st Button", @"2nd Button", @"3rd Button"];
+
+    for (int i = 0; i < [array count]; i++)
+    {
+        [actionSheet addButtonWithTitle:[array objectAtIndex:i]];
+    }
+   
+    // add cancel button
+    [actionSheet addButtonWithTitle:@"Cancel"];
+    actionSheet.cancelButtonIndex = 3;
+   
+    // add delete button
+    [actionSheet addButtonWithTitle:@"Delete"];
+    actionSheet.destructiveButtonIndex = 4;
+   
+    // show
+    [actionSheet showInView:self.view];
+}
+
+
+// conform to <UIActionSheetDelegate>
+// action sheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // check buttonIndex and doSomething accordingly
+}
