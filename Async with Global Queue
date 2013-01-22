@@ -1,0 +1,7 @@
+dispatch_queue_t q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+dispatch_async(q, ^{
+    // do long running task
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // update UI
+    });
+});
