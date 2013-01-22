@@ -1,0 +1,27 @@
+// can put this code snippet in view controller
+// if put in view's drawRect, remove beginImageContext and endImageContext
+-(void)resizeImage:(UIImage *)img newSize:(CGSize)newSize
+{
+    CGRect newRect = CGRectMake(0, 0, newSize.width, newSize.height);
+    UIGraphicsBeginImageContext(newSize);
+
+    // set path
+    UIBezierPath *p = [UIBezierPath bezierPathWithRoundedRect:newRect cornerRadius:20];
+    [p addClip];
+   
+    // aspect fill
+    CGRect drawingRect;
+    float ratio = MAX(newRect.size.width / img.size.width, newRect.size.height / img.size.height);
+    drawingRect.size.width = ratio * img.size.width;
+    drawingRect.size.height = ratio * img.size.height;
+    drawingRect.origin.x = (newRect.size.width - drawingRect.size.width) / 2.0;
+    drawingRect.origin.y = (newRect.size.height - drawingRect.size.height) / 2.0;
+   
+    // start drawing
+    [img drawInRect:drawingRect];
+   
+    // assign to imageView
+    UIImage *smallImage =  UIGraphicsGetImageFromCurrentImageContext();
+    [iboImageView setImage:smallImage];
+    UIGraphicsEndImageContext();
+}
