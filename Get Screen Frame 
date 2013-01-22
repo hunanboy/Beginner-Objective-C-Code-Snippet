@@ -1,0 +1,2 @@
+// this method will minus status bar if it's visible
+CGRect screenFrame = [[UIScreen mainScreen] applicationFrame];
