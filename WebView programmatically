@@ -1,0 +1,5 @@
+    CGRect screenFrame = [[UIScreen mainScreen] applicationFrame];
+    UIWebView *wv = [[UIWebView alloc] initWithFrame:screenFrame];
+    [wv setScalesPageToFit: YES];  // allow user zoom, default is NO!
+    // NSURL -> NSURLRequest
+    [[self webView] loadRequest: req];
