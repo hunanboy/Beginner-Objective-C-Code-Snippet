@@ -1,0 +1,13 @@
+// The only required method of <NSCopying>
+// invoke [super copyWithZone] unless it is directly subclassing from NSObject
+// All the code does is to create a new object, set the properties to be exactly the same as the existing object, and return the new object
+
+-(id)copyWithZone:(NSZone *)zone
+{
+    [super copyWithZone];
+    Car *newCar = [[Car alloc] init];
+    [newCar setName:[self name]];
+    [newCar setPrice:[self price]];
+   
+    return newCar;
+}
