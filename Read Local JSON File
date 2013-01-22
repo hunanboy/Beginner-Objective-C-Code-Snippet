@@ -1,0 +1,5 @@
+// read local json file into memory
+    NSString *path = [[NSBundle mainBundle] pathForResource:<#file name#> ofType:@"<#json#>"];
+    NSData *data = [NSData dataWithContentsOfFile:path options:NSDataReadingUncached error:nil];
+    // dictionary or array
+    NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
