@@ -1,0 +1,13 @@
+UIButton *button =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    [button addTarget:self
+               action:@selector(<#method:#>)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"<#title#>" forState:UIControlStateNormal];
+   
+    // for multiple lines of text
+    // button.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    // button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    button.frame =CGRectMake(<#x#>,<#y#>,<#width#>,<#height#>);
+    [self.view addSubview:button];
