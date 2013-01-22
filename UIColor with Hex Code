@@ -1,0 +1,12 @@
+// definition
+// take in 6 digits hex color code and alpha
+-(UIColor *)ColorFromRGB:(int)rgbValue andAlpha:(int)alphaValue
+{
+    return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0
+                           green:((float)((rgbValue & 0xFF00) >> 8))/255.0
+                            blue:((float)(rgbValue & 0xFF))/255.0
+                           alpha:alphaValue];
+}
+
+// method call
+//    UIColor *color = [self ColorFromRGB:<# 0xce8890 #> andAlpha:1.0];
