@@ -1,0 +1,9 @@
+// normally we create scrollview in xib
+self.scrollView.delegate = self;
+self.scrollView.contentSize = self.imageView.image.size;
+
+// implement the only protocol method needed for zooming
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
+}
