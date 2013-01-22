@@ -1,0 +1,14 @@
++(<#singleton_class#> *)sharedStore
+{
+    static <#singleton_class#> *store = nil;
+    if (!store) {
+        store = [[super allocWithZone:nil] init];
+    }
+   
+    return store;
+}
+
++(id)allocWithZone:(NSZone *)zone
+{
+    return [self sharedStore];
+}
