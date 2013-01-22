@@ -1,0 +1,7 @@
+// could conforms to <UIAlertViewDelegate> or not
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title"
+                                                    message:@"Message"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:nil ];
+    [alert show];
