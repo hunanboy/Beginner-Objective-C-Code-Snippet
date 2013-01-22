@@ -1,0 +1,48 @@
+// All data source methods using FRC is here
+#pragma mark - Table view data source With FRC
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // NSLog(@"section count is %d",[[self.frc sections] count]);
+    return [[self.frc sections] count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // NSLog(@"rows in secion count is %d",[[[self.frc sections] objectAtIndex:section] numberOfObjects]);
+    return [[[self.frc sections] objectAtIndex:section] numberOfObjects];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [[[self.frc sections] objectAtIndex:section] name];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [self.frc sectionForSectionIndexTitle:title atIndex:index];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return [self.frc sectionIndexTitles];
+}
+
+
+// helper method
+- (void) configureCell:(UITableViewCell *)cell atIndexPath:indexPath
+{
+    Event *event = [self.frc objectAtIndexPath:indexPath];
+   
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", event.title];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+   
+    [self configureCell:cell atIndexPath:indexPath];
+   
+    return cell;
+}
