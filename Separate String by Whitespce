@@ -1,0 +1,5 @@
+     NSMutableArray *a = [[string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] mutableCopy];
+     // Strip EXTRA (more than 1 continously) whitespaces
+     // if only one white space, it won't become an object of the array
+     // else if N continuous white spaces, N-1 spaces become objects of array
+     [a filterUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];
