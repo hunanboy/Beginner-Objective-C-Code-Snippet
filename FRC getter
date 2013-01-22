@@ -1,0 +1,28 @@
+#pragma mark -  NSFetchedResultsController getter
+- (void)frc
+{
+    if (!_frc) {
+        return _frc;
+    }
+   
+    NSError *error = nil;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest fetchRequestWithEntityName:@"<#entity#>"];
+                                   
+    NSSortDescriptor *sd = [[NSSortDescriptor alloc] initWithKey:<#column name#> ascending:<#BOOL#>];
+    NSArray *sortDescriptors = @[sd];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+
+    // set predicate if necessary
+
+    // finally allocate _frc
+    _frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
+                                               managedObjectContext:￼<#context#> 
+                                                 sectionNameKeyPath:￼nil 
+                                                          cacheName:nil];
+
+    [_frc setDelegate:self]; // Do not forget this!
+    [_frc performFetch:&error];
+    [self.tableView reloadData];
+
+    return _frc;
+}
