@@ -1,0 +1,7 @@
+dispatch_queue_t q = dispatch_queue_create("com.donghui.imageDownloader", NULL);
+dispatch_async(q, ^{
+    // do time consuming job
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // update UI
+                });
+            });
