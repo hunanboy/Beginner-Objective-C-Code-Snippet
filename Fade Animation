@@ -1,0 +1,11 @@
+- (void)fadeAnimation:(id)sender{
+    CABasicAnimation *fader = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    [fader setFromValue:@1.0];  // must set fromValue explicitly!!
+    [fader setToValue:@0.2];
+    [fader setDuration:3.0];
+   
+    // must update model layer!!
+    [iboLabel.layer setOpacity:0.2];
+
+    [iboLabel.layer addAnimation:fader forKey:@"BigFade"];
+}
