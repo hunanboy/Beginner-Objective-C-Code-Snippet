@@ -1,0 +1,16 @@
+// must call this method in drawRect
+// otherwise won't work
+-(void)drawText:(CGContextRef)ctx
+{
+    NSString *s = @"<text for drawing>";
+   
+    UIFont *font = [UIFont systemFontOfSize:20];
+    CGSize sz = [s sizeWithFont:font];
+    CGRect r = CGRectMake(10, 0, sz.width, sz.height);
+   
+    // shadow
+    CGSize offset = CGSizeMake(1, 1);
+    CGContextSetShadow(ctx, offset, 1);
+   
+    [s drawInRect:r withFont:font];
+}
