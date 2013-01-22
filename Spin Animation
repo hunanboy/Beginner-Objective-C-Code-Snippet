@@ -1,0 +1,15 @@
+-(void)spinAnimation:(id)sender
+{
+    // animation object
+    CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    // fromValue is implied
+    [spin setToValue:@(M_PI*2.0)];
+    [spin setDuration:1.0];
+   
+    // timing function
+    CAMediaTimingFunction *tf = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [spin setTimingFunction:tf];
+   
+    // kick off spin
+    [[_timeLabel layer] addAnimation:spin forKey:@"spinAnimation"];
+}
