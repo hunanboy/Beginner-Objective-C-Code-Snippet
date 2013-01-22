@@ -1,0 +1,19 @@
+// must have a navigation controoler first
+// UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+// [[self navigationItem] setRightBarButtonItem:bbi];
+
+- (void)refresh:(UIBarButtonItem *)sender {
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    [spinner startAnimating];
+   
+    dispatch_queue_t q = dispatch_queue_create("flickr downloader", NULL);
+    dispatch_async(q, ^{
+        // long running operation
+        sleep(3);
+        dispatch_async(dispatch_get_main_queue(), ^{  
+            self.navigationItem.rightBarButtonItem = sender; // replace back
+        });
+    });
+}
