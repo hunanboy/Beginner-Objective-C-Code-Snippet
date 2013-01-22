@@ -1,0 +1,9 @@
+label = [[UILabel alloc] initWithFrame:CGRectMake(<#x#>, <#y#>, <#width#>, <#height#>)];label.text = @"<#label text#>";
+
+label.font = [UIFont systemFontOfSize:14.0];
+label.textAlignment = NSTextAlignmentCenter;
+// mainLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
+
+
+label.backgroundColor =[UIColor lightGrayColor];
+[self.view addSubview:label];
