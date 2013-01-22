@@ -1,0 +1,4 @@
+if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+     {
+         // ipad specific code
+     }
