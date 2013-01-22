@@ -1,0 +1,70 @@
+// Add `MessageUI` framework
+// #import <MessageUI/MessageUI.h>
+// <MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate>
+#pragma mark - share button for showing action sheet
+- (IBAction)ibaShare:(id)sender {
+   
+   
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Share with friends!"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Send Email",@"Send Messages",nil];
+    [actionSheet showFromTabBar:self.tabBarController.tabBar];
+}
+
+#pragma mark -  action sheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // index from top down
+    if (buttonIndex == 0) { //0是最顶上的，从上往下数
+       
+        // check mail availability
+        if ([MFMailComposeViewController canSendMail] == NO) {
+            NSLog(@"cannot send email!");
+        } else
+        {
+            MFMailComposeViewController* mail = [[MFMailComposeViewController alloc] init];
+            mail.mailComposeDelegate = self;
+            [mail setSubject:@"My Subject"];
+            [mail setMessageBody:@"Hello there." isHTML:NO];
+            if (mail)
+            {
+                [self presentViewController:mail animated:YES completion:NULL];
+            }
+        }
+    } else if (buttonIndex == 1){
+        // check message availability
+        if( [MFMessageComposeViewController canSendText] == NO)
+        {
+            NSLog(@"cannot send text!");
+        } else
+        {
+            MFMessageComposeViewController *sms = [[MFMessageComposeViewController alloc] init];
+            sms.messageComposeDelegate = self;
+            [sms setBody:@"body is here"];
+            [self presentViewController:sms animated:YES completion:NULL];
+        }
+    }
+}
+
+#pragma mark - mail delegate
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
+{
+    if (result == MFMailComposeResultSent) {
+        NSLog(@"Mail sent!");
+    }
+   
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - message delegate
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    if (result == MessageComposeResultSent) {
+        NSLog(@"Message sent!");
+    }
+   
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
